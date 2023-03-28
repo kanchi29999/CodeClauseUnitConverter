@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Unit Converter</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+      function convert() {
+        var inputValue = parseFloat(document.getElementById("inputValue").value);
+        var fromUnit = document.getElementById("fromUnit").value;
+        var toUnit = document.getElementById("toUnit").value;
+        var result;
+        
+        if (fromUnit === "meters" && toUnit === "feet") {
+          result = inputValue * 3.28084;
+        } else if (fromUnit === "meters" && toUnit === "inches") {
+          result = inputValue * 39.3701;
+        } else if (fromUnit === "feet" && toUnit === "meters") {
+          result = inputValue / 3.28084;
+        } else if (fromUnit === "feet" && toUnit === "inches") {
+          result = inputValue * 12;
+        } else if (fromUnit === "inches" && toUnit === "meters") {
+          result = inputValue / 39.3701;
+        } else if (fromUnit === "inches" && toUnit === "feet") {
+          result = inputValue / 12;
+        } else if (fromUnit === "celsius" && toUnit === "fahrenheit") {
+          result = (inputValue * 9/5) + 32;
+        } else if (fromUnit === "celsius" && toUnit === "kelvin") {
+          result = inputValue + 273.15;
+        } else if (fromUnit === "fahrenheit" && toUnit === "celsius") {
+          result = (inputValue - 32) * 5/9;
+        } else if (fromUnit === "fahrenheit" && toUnit === "kelvin") {
+          result = (inputValue - 32) * 5/9 + 273.15;
+        } else if (fromUnit === "kelvin" && toUnit === "celsius") {
+          result = inputValue - 273.15;
+        } else if (fromUnit === "kelvin" && toUnit === "fahrenheit") {
+          result = (inputValue - 273.15) * 9/5 + 32;
+        }
+        document.getElementById("result").innerHTML = inputValue + " " + fromUnit + " = " + result + " " + toUnit;
+            }
+    </script>
+  </head>
+  <body>
+    <div class="class">
+    <h1>Unit Converter</h1>
+<form>
+  <input type="number" id="inputValue">
+  <select id="fromUnit">
+    <optgroup label="Length">
+      <option value="meters">Meters</option>
+      <option value="feet">Feet</option>
+      <option value="inches">Inches</option>
+    </optgroup>
+    <optgroup label="Temperature">
+      <option value="celsius">Celsius</option>
+      <option value="fahrenheit">Fahrenheit</option>
+      <option value="kelvin">Kelvin</option>
+    </optgroup>
+  </select>
+  <span>to</span>
+  <select id="toUnit">
+    <optgroup label="Length">
+      <option value="meters">Meters</option>
+      <option value="feet">Feet</option>
+      <option value="inches">Inches</option>
+    </optgroup>
+    <optgroup label="Temperature">
+      <option value="celsius">Celsius</option>
+      <option value="fahrenheit">Fahrenheit</option>
+      <option value="kelvin">Kelvin</option>
+    </optgroup>
+  </select>
+  <button type="button" onclick="convert()">Convert</button>
+</form>
+<p id="result"></p>
+</div>
+    <!-- <script src="script.js"></script> -->
+  </body>
+</html>
